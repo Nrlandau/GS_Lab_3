@@ -6,14 +6,23 @@ namespace Lab3
     {
         static void Main(string[] args)
         {
+            //vars
             int number = 0;
-            string name ;
+            string name;
+            //input
             System.Console.WriteLine("What is your name?");
             name = System.Console.ReadLine();
+            while(name.Length == 0)
+            {
+                System.Console.WriteLine("Enter a Name:");
+                name = System.Console.ReadLine();
+            }
+
             do
             {
                 System.Console.WriteLine("Input a number between 1 and 100 or -1 to quit, {0}.", name);
                 number = int.Parse(System.Console.ReadLine());
+                //magic and output
                 if(number == -1)
                     continue;
                 if (number < 1 || number > 100) 
@@ -22,9 +31,15 @@ namespace Lab3
                     continue;
                 }
 
-                if(number % 2 == 1)
-                    System.Console.WriteLine("{0} is Odd, {1}",number,name);
-                else
+                if(number % 2 == 1)//odd
+                {
+                    if(number > 60)
+                        System.Console.WriteLine("{0} is Odd, {1}",number,name);
+                    else
+                        System.Console.WriteLine("{0} is Odd, {1}",number,name);
+                }
+
+                else//even
                 {
                     if( number < 25)
                         System.Console.Write("That number is less than 25 and ");
@@ -32,7 +47,6 @@ namespace Lab3
                         System.Console.Write("{0} is ",number);
                     System.Console.WriteLine("Even, {0}",name);
                 }
-                
             }while(number != -1);
         }
     }
